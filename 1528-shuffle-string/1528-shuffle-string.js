@@ -4,12 +4,8 @@
  * @return {string}
  */
 var restoreString = function(s, indices) {
-    let res = [];
-    let i =0;
-    for(i = 0; i < indices.length; i++)
-    {
-        res[indices[i]] = s[i];        
-    }
-    res = res.join('');
-    return res;
+    return indices.reduce((arr, item, i) => {
+        arr[item] = s[i];
+        return arr;
+     }, []).join('');
 };

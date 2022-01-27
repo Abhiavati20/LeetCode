@@ -8,7 +8,8 @@ var removeOuterParentheses = function(s) {
     for(let str of s)
     {
         str === ')' && count--;
-        count!==0 ? res+=str : null;
+        if(count !== 0)
+            res+=str;
         str === '(' && count++;
         
     }

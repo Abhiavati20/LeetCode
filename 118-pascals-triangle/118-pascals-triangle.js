@@ -1,21 +1,26 @@
-class Solution {
-public:
-    vector<vector<int>> generate(int numRows) {
-        vector<vector<int>> res(numRows);
-//         creating a 2d array
-        for(int i = 0; i < numRows; i++)        // looping through the no of rows
+/**
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function(numRows) {
+//     creating an array since we cannot make a 2d array
+    let res = [];
+    res = [[1]]
+    for(let i = 1; i < numRows; i++)
+    {
+        let prev=res[i-1];
+        let temp = [];
+        for(let j = 0; j <= i; j++)
         {
-            res[i].resize(i+1);
-            for(int j = 0; j <= i; j++)
-            {
-//                 if j is 1st index or last index just put 1 in res
-                if(j == 0 || j == i)
-                    res[i][j]=1;
-                else
-//                     add its [i-1][j-1] + [i-1][j]
-                    res[i][j] = res[i-1][j-1] + res[i-1][j];
+//             if j is last or 1st index then push 1 in array
+            if(j === 0 || j === i)
+                temp.push(1);
+            else{
+                temp.push(prev[j-1] + prev[j]);
             }
         }
-        return res;
+        res.push(temp);
+        
     }
+    return res;
 };

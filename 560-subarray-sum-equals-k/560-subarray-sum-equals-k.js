@@ -1,17 +1,25 @@
-class Solution {
-public:
-    int subarraySum(vector<int>& nums, int k) {
-        int size = nums.size();
-        int sum=0, ans=0;
-        map<int,int> mp;
-        mp[0] = 1;
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var subarraySum = function(nums, k) {
+
+    let sum = 0, subs = 0;
+        let sums = new Map();
+        sums.set(sum, 1);
         
-        for(int i=0; i<size; i++){
-            sum += nums[i];
-            if(mp[sum-k]) ans+=mp[sum-k];
-            mp[sum]++;
+        for(let i=0; i<nums.length; i++)
+        {
+                sum += nums[i];
+                let cnt = sums.get(sum) || 0;
+                sums.set(sum, cnt+1);
+                cnt = sums.get(sum-k) || 0;
+                subs += cnt;
         }
         
-        return ans;
-    }
+        if(k === 0)
+                subs -= nums.length;
+        
+        return subs;
 };

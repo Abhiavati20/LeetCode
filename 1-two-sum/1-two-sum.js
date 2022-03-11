@@ -1,17 +1,19 @@
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> result;
-        map<int,int> mp;
-        for(int i = 0; i < nums.size(); i++)
-        {
-            if(mp.find(target - nums[i])!=mp.end()){
-                result.push_back(mp[target - nums[i]]);
-                result.push_back(i);
-                break;
-            }
-            mp[nums[i]] = i;
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    let sums = new Map();
+
+    for (let [index, num] of nums.entries()) {
+        let potential = target - num;
+        
+        if (sums.has(potential)) {
+            return [index, sums.get(potential)]
+        } else {
+            sums.set(num, index)
         }
-        return result;
     }
+    return [-1,-1];
 };

@@ -11,22 +11,30 @@
  */
 class Solution {
 public:
-    void fillStack(TreeNode* root,stack<TreeNode*> &st){
+    // void fillStack(TreeNode* root,stack<TreeNode*> &st){
+    //     if(root){
+    //         fillStack(root->left,st);
+    //         st.push(root);
+    //         fillStack(root->right,st);
+    //     }
+    // }
+    // TreeNode* searchBST(TreeNode* root, int val) {
+    //     stack<TreeNode*> st;
+    //     fillStack(root,st);
+    //     while(!st.empty()){
+    //         if(st.top()->val == val){
+    //             TreeNode* temp = st.top();
+    //             return temp;
+    //         }
+    //         st.pop();
+    //     }
+    //     return NULL;
+    // }
+    TreeNode* searchBST(TreeNode* root, int val){
         if(root){
-            fillStack(root->left,st);
-            st.push(root);
-            fillStack(root->right,st);
-        }
-    }
-    TreeNode* searchBST(TreeNode* root, int val) {
-        stack<TreeNode*> st;
-        fillStack(root,st);
-        while(!st.empty()){
-            if(st.top()->val == val){
-                TreeNode* temp = st.top();
-                return temp;
-            }
-            st.pop();
+            if(root->val == val)
+                return root;
+            return searchBST(root->val > val ? root->left : root->right,val);
         }
         return NULL;
     }

@@ -7,12 +7,14 @@ public:
         //     sum+=i;
         // return (n*(n+1)/2) - sum;
         
-        int result = nums.size();
-        for(int i = 0; i < nums.size(); ++i)
-        {
-            result ^= nums[i];
-            result ^= i;
-        }
-        return result;
+        // int result = nums.size();
+        // for(int i = 0; i < nums.size(); ++i)
+        // {
+        //     result ^= nums[i];
+        //     result ^= i;
+        // }
+        // return result;
+        
+        return nums.size() * (nums.size() + 1) / 2 - accumulate(nums.begin(),nums.end(),0);
     }
 };

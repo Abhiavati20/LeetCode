@@ -11,9 +11,11 @@ class Solution{
   public:
     int middle(int A, int B, int C){
         //code here//Position this line where user code will be pasted.
-        vector<int> res = {A,B,C};
-        sort(res.begin(),res.end());
-        return res[1];
+        // vector<int> res = {A,B,C};
+        // sort(res.begin(),res.end());
+        if (A < B)
+        return (B < C)? B : max(A, C);
+      return (A < C)? A : max(B, C);
     }
 };
 

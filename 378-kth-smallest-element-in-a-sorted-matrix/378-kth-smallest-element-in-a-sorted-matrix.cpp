@@ -1,22 +1,27 @@
 class Solution {
 public:
-    int kthSmallest(vector<vector<int>>& matrix, int k) {
-        vector<int> eles;
-        for(auto mat : matrix) {
-            for(auto i : mat){
-                eles.push_back(i);
+    int solve(vector<vector<int>> & matrix, int target) {
+        int i = 0;
+        int j = matrix.size() - 1;
+        int count = 0;
+        while(j>=0 && i < matrix.size()) {
+            if(matrix[j][i] > target) j--;
+            else {
+                count += j + 1;
+                i++;
             }
         }
-        sort(eles.begin(),eles.end());
-//         int start = 0; int end = eles.size() - 1;
-//         while(start <= end) {
-//             int mid = start + (end - start) / 2;
-//             if(mid == k - 1)
-//                 return eles[mid];
-//             else if(mid > k - 1) end = mid - 1;
-//             else start = mid + 1;
-            
-//         }
-        return eles[k - 1];
+        return count;
+    }
+    int kthSmallest(vector<vector<int>>& matrix, int k) {
+        int start = matrix[0][0];
+        int end = matrix[matrix.size() - 1][matrix.size() - 1];
+        while(start <= end) {
+            int mid = start + (end - start) / 2;
+            int count = solve(matrix,mid);    
+            if(count < k) start = mid + 1;
+            else end = mid - 1;
+        }
+        return start;
     }
 };

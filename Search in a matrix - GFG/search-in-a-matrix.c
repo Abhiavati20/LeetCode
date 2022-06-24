@@ -1,0 +1,50 @@
+// { Driver Code Starts
+//Initial Template for C
+
+#include <stdio.h>
+
+
+ // } Driver Code Ends
+//User function Template for C
+
+int matSearch (int N, int M, int matrix[][M], int x)
+{
+    int row = 0;
+    int col = M - 1;
+    while(col >= 0 && row <= N - 1) {
+        if(x == matrix[row][col]) return 1;
+        else if(x > matrix[row][col]) row++;
+        else if(x < matrix[row][col]) col--;
+    }
+    return 0;
+}
+
+// { Driver Code Starts.
+
+int main()
+{
+    int tc;
+	scanf("%d", &tc);
+	while(tc--)
+	{
+        int n, m;
+		scanf("%d", &n);
+		scanf("%d", &m);
+		int matrix[n][m];
+		
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < m; j++){
+				scanf("%d", &matrix[i][j]);
+			}
+		}
+		   
+		int x;
+		scanf("%d", &x);
+		
+        int result = matSearch (n, m, matrix, x);
+        printf("%d", result);
+		printf("\n");
+    }
+    return 0;
+}
+  // } Driver Code Ends

@@ -25,10 +25,6 @@ public:
             }
         }
         
-        if(visited[source] && visited[destination]) {
-            return true;
-        }
-        
-        return false;
+        return visited[destination];
     }
 };

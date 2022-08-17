@@ -7,7 +7,7 @@ public:
             umap[edge[1]].push_back(edge[0]);
         }
         
-        vector<bool> visited(n + 1, false);
+        vector<bool> visited(n, false);
         queue<int> q;
         
         q.push(source);

@@ -17,6 +17,7 @@ public:
             int u = q.front();
             q.pop();
             for(int v : umap[u]) {
+                if(v == destination) return true;
                 if(visited[v] == false) {
                     
                     visited[v] = true;

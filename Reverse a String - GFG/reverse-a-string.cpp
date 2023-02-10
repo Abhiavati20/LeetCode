@@ -32,12 +32,25 @@ int main() {
 
 string reverseWord(string str){
     //Your code here
-    int len = str.length();
-    string strCpy = "";
-    for(int i = len - 1; i >= 0; i--) {
-        strCpy += str[i];
+    // Approach 1 -> brute force
+    // int len = str.length();
+    // string strCpy = "";
+    // for(int i = len - 1; i >= 0; i--) {
+    //     strCpy += str[i];
+    // }
+    // str = strCpy;
+    // return str;
+    
+    // Approach 2 -> 2 pointers
+    int i = 0;
+    int j = str.length() - 1;
+    while(i < j) {
+        char temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+        i++;
+        j--;
     }
-    str = strCpy;
     return str;
 }
 
